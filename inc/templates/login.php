@@ -3,7 +3,9 @@
 	<div class="col-xs-12 col-sm-4 col-sm-offset-4 well well-md">
 		<h1 class="text-center">Please Log In</h1>
 		<?php if($msg) : ?>
-			<p><?php echo $msg['Error']; ?></p>
+			<div class="alert alert-danger">
+				<p><?php echo $msg['Error']; ?></p>
+			</div>
 		<?php endif; ?>
 		<form method="post">
 		  <div class="form-group">

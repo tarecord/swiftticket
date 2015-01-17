@@ -21,14 +21,14 @@ include_once 'settings.php';
 	if(isset($_POST['act_login'])){
 		$user=$_POST['login'];
 		$pass=$_POST['pass'];
-		if($user == "" || $pass==""){
-			$msg = array("Error", "Username / Password Wrong !");
+		if($user == "" || $pass == ""){
+			$msg = array("Error" => "Username / Password Wrong !");
 		}else{
 			$login = $LS->login($user, $pass);
 			if($login === false){
-				$msg = array("Error", "Username / Password Wrong !");
+				$msg = array("Error" => "Username / Password Wrong !");
 			}else if(is_array($login) && $login['status'] == "blocked"){
-				$msg = array("Error", "Too many login attempts. You can attempt login after ". $login['minutes'] ." minutes (". $login['seconds'] ." seconds)");
+				$msg = array("Error" => "Too many login attempts. You can attempt login after ". $login['minutes'] ." minutes (". $login['seconds'] ." seconds)");
 			}
 		}
 	}
