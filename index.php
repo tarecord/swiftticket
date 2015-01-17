@@ -5,30 +5,45 @@
 include_once 'settings.php';
 
 //Include the class files as they are needed.
-  function __autoload($class_name)
-	  {
-	      include_once 'inc/classes/' . $class_name . '.php';
-	  }
+	function __autoload($class_name)
+		{
+		  include_once 'inc/classes/' . $class_name . '.php';
+		}
+	
+	//Initialize the Database Object.
+	$db = new Db();
+	
+	$LS = new LoginSystem();
+	$LS->init();
+	
+	$msg = array();
+
+	if(isset($_POST['act_login'])){
+		$user=$_POST['login'];
+		$pass=$_POST['pass'];
+		if($user == "" || $pass==""){
+			$msg = array("Error", "Username / Password Wrong !");
+		}else{
+			$login = $LS->login($user, $pass);
+			if($login === false){
+				$msg = array("Error", "Username / Password Wrong !");
+			}else if(is_array($login) && $login['status'] == "blocked"){
+				$msg = array("Error", "Too many login attempts. You can attempt login after ". $login['minutes'] ." minutes (". $login['seconds'] ." seconds)");
+			}
+		}
+	}
+	
+	if(isset($_GET['logout'])){
+		$LS->logout();
+	}
 	  
-	  //Initialize the Database Object.
-	  $db = new Db();
+	if($LS->loggedIn){
+	  // If user is logged in show the homepage template.
+	  include_once 'inc/templates/home.php';
+	}else{
+	  // if user is not logged in show the login page.
+	  include_once 'inc/templates/login.php';
+	}
 	  
 ?>
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Swift Ticket</title>
-		
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-		
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-		
-	</head>
-	<body>
-		
-		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-	</body>
-</html>
