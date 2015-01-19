@@ -1,6 +1,6 @@
 <?php include_once 'inc/head.php'; ?>
 
-	<div class="col-xs-12 col-sm-4 col-sm-offset-4 well well-md">
+	<div class="col-xs-12 col-sm-4 col-sm-offset-4 well well-md" id="login-form">
 		<h1 class="text-center">Please Log In</h1>
 		<?php if($msg) : ?>
 			<div class="alert alert-danger">

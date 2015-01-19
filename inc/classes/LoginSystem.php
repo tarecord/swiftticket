@@ -45,7 +45,7 @@ class LoginSystem {
 				"/php/loginSystem/", "/php/loginSystem/reset.php"
 			); // Pages that doesn't require logging in (exclude login page)
 			
-			private $loginPage    	= "/"; // The login page. ex : /login.php or /accounts/login.php
+			private $loginPage    	= ""; // The login page. ex : /login.php or /accounts/login.php
 			private $homePage     	= ""; // The home page. The main page for logged in users. Redirects to here when logs in
 			public $bfTime			= 300; // The time IN SECONDS for which block from login action should be done after 5 incorrect login attempts. Use http://www.easysurf.cc/utime.htm#m60s for converting minutes to seconds. Default : 5 minutes
 			
