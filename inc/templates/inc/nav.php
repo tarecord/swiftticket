@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Swift Ticket</a>
+      <a class="navbar-brand" href="?p=home">Swift Ticket</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,10 +17,7 @@
         <p class="navbar-text">
 	        <?php if($LS->loggedIn): ?>
 			  <!-- User not logged in -->
-			  Welcome <?php echo $LS->getUser("name"); ?>! <a href="?logout">Log Out?</a>
-			<?php else : ?>
-				<!-- User not logged in -->
-				Logged out
+			  Logged in as <?php echo $LS->getUser("name"); ?>
 			<?php endif; ?>
 		</p>
 		<li>
@@ -30,15 +27,3 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
-	<div class="row">
-		<div class="col-sm-2 sidebar">
-			<nav class="nav">
-				<ul class="nav nav-sidebar">
-					<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">Reports</a></li>
-					<li><a href="#">Analytics</a></li>
-					<li><a href="#">Export</a></li>
-				</ul>
-			</nav>
-		</div>

@@ -1,3 +1,8 @@
+
+<?php
+	include_once 'inc/authcheck.php';
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
